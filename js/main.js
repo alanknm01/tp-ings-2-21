@@ -28,17 +28,22 @@ function renderId(id,post_number){
     $id.textContent = id
 }
 
+ 
 
-// const post_creator = (post_number) =>{
+ const post_creator = (post_number) =>{
     
-//     const $container  = document.querySelector(`#post${post_number}`);
-//     $container.innerHTML = `<h3 id="article_name${post_number}"></h3>
-//                             <h3 id="article_price${post_number}"></h3>
-//                             <h3 id="article_id${post_number}"></h3>
-//                             <img class="img-posts" src="" id="article_image${post_number}" alt="">`;
+     const $container  = document.querySelector(`#post${post_number}`);
+     $container.innerHTML = `<h3 id="article_name${post_number}"></h3>
+                             <h3 id="article_price${post_number}"></h3>
+                             <h3 id="article_id${post_number}"></h3>
+                             <img class="img-posts" src="" id="article_image${post_number}" alt="">`;
     
-//     }
+     }
 
+// const image_creator = (post_number) => {
+//     const $img_creator = document.querySelector(`#post${post_number}`);
+//     $img_creator.innerHTML = `<img class="img-posts" src="" id="article_image${post_number}" alt="">`
+// }
 
 const RequestMeli = async (article,post_number) => {
     console.log("nombre request",article)
@@ -51,9 +56,10 @@ const RequestMeli = async (article,post_number) => {
         console.log("nombre articulooo",article_name)
         article_price =  articleMeli.results[0].price
         article_id =  articleMeli.results[0].id
-
+        post_creator(post_number)
         renderName(`NOMBRE DEL ARTICULO: ${article_name}`,post_number)
         renderPrice(`PRECIO: ${article_price}`,post_number)
+        
     }
     else{
         renderMessage("Request Error")
@@ -62,16 +68,20 @@ const RequestMeli = async (article,post_number) => {
         if(picture_response.ok){
             picture_meli = await picture_response.json()
             article_image = picture_meli.pictures[0].secure_url
+            //image_creator(post_number)
             renderImage(article_image,post_number)
+            
+
         }
         else{
             renderMessage("Image Error")
         }
+        
         console.log(post_number)
         console.log(article_name)
         console.log(article_price)
         
-       // post_creator(post_number)
+       
         
         
 
@@ -85,7 +95,7 @@ RequestMeli("mate",1);
 RequestMeli("perro",2);
 RequestMeli("fundas",3);
 RequestMeli("telefonos",4);
-RequestMeli("llaveros",5);
-RequestMeli("artesanias",6);
-RequestMeli("collares",7);
-RequestMeli("pulseras",8);
+// RequestMeli("llaveros",5);
+// RequestMeli("artesanias",6);
+// RequestMeli("collares",7);
+// RequestMeli("pulseras",8);
