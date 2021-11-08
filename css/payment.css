@@ -1,0 +1,92 @@
+.radioPago{
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    margin: auto auto; 
+    padding: 10px;   
+}
+
+.pago_title{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.containerInputs { /* CONTENEDOR DE LOS INPUTS */
+    background: rgba(0, 0, 0, 0.3);
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+    width: 450px;
+
+}
+
+.pago__creditCard {
+    margin: 0;
+    padding-left: 55px;
+    font-size: 1em;
+    font-size: 18px;
+    color: white;
+}
+
+.pago__input { /* INPUTS NUM TARJETA - NOMBRE PERSONA */
+    display: block;
+    font-size: 17px;
+    margin: 8px auto;
+    padding: 5px;
+    background: rgba(0, 0, 0, .9);
+    color: white;
+    width: 330px;
+    border-bottom: 4px solid orange;
+    transition: all .4s ease; 
+    border-radius: 5px;
+}
+
+.pago__input:focus{
+    border-bottom: 4px solid blue;
+}
+
+.DateCode { /* CONTENEDOR INPUTS F.EXP Y COD.SEG */
+    text-align: center;
+}
+
+.DateCode input{ /* INPUTS F.EXP Y COD.SEG */
+    
+    font-size: 16px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background: rgba(0, 0, 0, .9);
+    color: white;
+    width: 150px;
+    border-bottom: 4px solid orange;
+    transition: all .4s ease; 
+    border-radius: 5px;
+
+}
+
+.DateCode input:focus{
+    border-bottom: 4px solid blue;
+}
+
+.containerButton {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.pago__button { /* BOTON DE REGISTRAR */
+    font-size: 16px;
+    margin: auto;
+    border: none;
+    padding: 10px;
+    background: orange;
+    color: white;
+    transition: all .3s;
+    cursor: pointer;
+    
+}
+
+.pago__button:hover{
+    background: blue;
+}
