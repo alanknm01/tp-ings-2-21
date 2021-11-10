@@ -63,29 +63,25 @@ const RequestMeli = async (article,post_number) => {
         post_creator(cont)
         renderName(`NOMBRE DEL ARTICULO: ${article_name}`,cont)
         renderPrice(`PRECIO: ${article_price}`,cont)
+        const picture_response = await fetch (`https://api.mercadolibre.com/items/${article_id}`)
+        if(picture_response.ok){
+            picture_meli = await picture_response.json()
+            console.log("ID PICTURE: ",picture_meli.id)
+            article_image = picture_meli.pictures[0].secure_url
+            //image_creator(post_number)
+            renderImage(article_image,cont)
+        }
+        else{
+            renderMessage("Image Error")
+        }
+
         cont+=1;
         }
     }
     else{
         renderMessage("Request Error")
     }
-        const picture_response = await fetch (`https://api.mercadolibre.com/items/${article_id}`)
-        if(picture_response.ok){
-            picture_meli = await picture_response.json()
-            let cont2 = 0;
-            while(cont2 < 10) 
-            {
-            console.log("ID PICTURE: ",picture_meli.id)
-            article_image = picture_meli.pictures[0].secure_url
-            //image_creator(post_number)
-            renderImage(article_image,cont2)
-            cont2+=1;
-        }
-            
-        }
-        else{
-            renderMessage("Image Error")
-        }
+        
         
         console.log(post_number)
         console.log(article_name)
