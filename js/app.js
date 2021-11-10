@@ -2,25 +2,25 @@ $( document ).ready(function() {
     userState();
 });
 
-function registerMenu(){
+const registerMenu = ()=> {
     document.getElementById('form-login').style.display="none";
     document.getElementById('form-SignUp').style.display="block";
     document.getElementById('pagoSignUp').style.display="none";
 }
 
-function loginMenu(){
+const loginMenu = ()=>{
     //document.getElementById('form-SignUp').style.display="none";
     //document.getElementById('form-login').style.display="block";
     localStorage.setItem('MedioPago','Invalido');
 }
 
-function medioPagoMenu(){
+const medioPagoMenu = ()=>{
     document.getElementById('form-SignUp').style.display="none";
     document.getElementById('pagoSignUp').style.display="block";
     showFormMercadoPago();
 }
 
-function userState(){
+const userState = ()=>{
     if (localStorage.getItem('Login')=='True'){
         $("#loginItem").css('display','none');
         localStorage.setItem('Login','False');
@@ -31,7 +31,7 @@ function userState(){
 }
 
 
-function validaCheckbox(){
+const validaCheckbox = ()=>{
 
     const checkboxMuestra = document.getElementById('post_muestra');
     const checkboxVenta = document.getElementById('post_venta');
@@ -89,7 +89,7 @@ function register(){
             }
         }
 
-function validaContraseña(pass){
+const validaContraseña = (pass) =>{
     if (pass.length>=8 && pass.length<=20){
         return true;
     }
@@ -98,7 +98,7 @@ function validaContraseña(pass){
     }
 }
 
-function validarFecha(fechaNacimiento){
+const validarFecha = (fechaNacimiento)=>{
     fecha= Date.parse(fechaNacimiento); 
     if(fecha<=Date.now()){
     return true;
@@ -108,7 +108,7 @@ function validarFecha(fechaNacimiento){
     }
 }
 
-function vaciarCampos(){
+const vaciarCampos = ()=>{
     $("#nameInput").val("");
     $("#surnameInput").val("");
     $("#dniInput").val("");
@@ -120,7 +120,7 @@ function vaciarCampos(){
     $("#domicilioIncorrecto").attr("checked","true");
 }
 
-function registrarMedioPago(){
+const registrarMedioPago = ()=>{
     //Tarjeta de Credito
     var tarjetaNumero= $("#numTarj").val();
     var tarjetaNombre= $("#nombTarj").val();
@@ -142,12 +142,12 @@ function registrarMedioPago(){
     }
 }
 
-function cancelarMedioPago(){
+const cancelarMedioPago = () =>{
     vaciarCamposMedioPago();
     registerMenu();
 }
 
-function vaciarCamposMedioPago(){
+const vaciarCamposMedioPago = ()=>{
     $("#radioFormTarjetaCredito").prop("checked",false);
     $("#radioFormMercadoPago").prop("checked",true);
     $("#radioFormTransferenciaBancaria").prop("checked",false);
@@ -161,7 +161,7 @@ function vaciarCamposMedioPago(){
     $("#cuiltTransf").val("");
 }
 
-function vehiculoCheck(){
+const vehiculoCheck = ()=>{
     if ($("#vehiculoCorrecto").prop("checked")){
     return true;
 }
@@ -170,7 +170,7 @@ function vehiculoCheck(){
   }
 }
 
-function domicilioCheck(){
+const domicilioCheck = ()=>{
     if ($("#domicilioCorrecto").prop("checked")){
         return true;
     }
@@ -180,7 +180,7 @@ function domicilioCheck(){
 }
 
  
-function validaMailMercadoPago(mail){
+const validaMailMercadoPago = (mail)=>{
     if ($("#emailMP").prop('required')){
         var ex_regular_mail; 
         ex_regular_mail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
@@ -194,7 +194,7 @@ function validaMailMercadoPago(mail){
     }
 }
   
-function validaMail(mail){
+const validaMail = (mail)=>{
         var ex_regular_mail; 
         ex_regular_mail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
         if(ex_regular_mail.test (mail) == true){
@@ -204,7 +204,7 @@ function validaMail(mail){
         }  
 }
 
-function validaDNI(dni){
+const validaDNI = (dni)=>{
     var ex_regular_dni; 
     ex_regular_dni = /^\d{8}(?:[-\s]\d{4})?$/;
     if(ex_regular_dni.test (dni) == true){
@@ -214,7 +214,7 @@ function validaDNI(dni){
      }
 }
 
-function validaNumero(valor){
+const validaNumero = (valor)=>{
     let isnum = /^\d+$/;
     if (isnum.test(valor)){
         return true;
@@ -223,7 +223,7 @@ function validaNumero(valor){
     }
 }
 
-function validaTarjetaCredito(tarjetaNumero, tarjetaNombre, tarjetaFecha, tarjetaCodigo){
+const validaTarjetaCredito = (tarjetaNumero, tarjetaNombre, tarjetaFecha, tarjetaCodigo)=>{
     if ($("#numTarj").prop('required')){
         if (tarjetaCodigo.length == 3 && validaNumero(tarjetaCodigo) && tarjetaNombre!="" && (tarjetaFecha.length == 4 || tarjetaFecha.length==5)  && tarjetaNumero.length==16 && validaNumero(tarjetaNumero)){
             return true;
@@ -236,7 +236,7 @@ function validaTarjetaCredito(tarjetaNumero, tarjetaNombre, tarjetaFecha, tarjet
     }
 }
 
-function validarTransferencia(transferenciaCbu, transferenciaCuil){
+const validarTransferencia = (transferenciaCbu, transferenciaCuil)=>{
     if ($("#cbuTransf").prop('required')){
         if(transferenciaCbu!="" && transferenciaCuil.length == 11 && validaNumero(transferenciaCuil) && transferenciaCbu.length == 22 && validaNumero(transferenciaCbu)){
             return true;
@@ -249,7 +249,7 @@ function validarTransferencia(transferenciaCbu, transferenciaCuil){
     }
 }
 
- function login(){
+const login = ()=>{
     var email=$("#userInputLogin").val();
     var password=$("#passwordInputLogin").val();
     var account= JSON.parse(localStorage.getItem('account'));
@@ -268,7 +268,7 @@ function validarTransferencia(transferenciaCbu, transferenciaCuil){
     }
 }
 
-function showFormMercadoPago() {
+const showFormMercadoPago = ()=>{
     $("#formMercadoPago").css('display','block');
     $("#emailMP").prop('required',true);
     
@@ -282,7 +282,7 @@ function showFormMercadoPago() {
     $("#cbuTransf").prop('required',false);
     $("#cuiltTransf").prop('required',false);
 }
-function showFormTarjetaCredito() {
+const showFormTarjetaCredito = () => {
     $("#formMercadoPago").css('display','none');
     $("#emailMP").prop('required',false);
 
@@ -296,7 +296,7 @@ function showFormTarjetaCredito() {
     $("#cbuTransf").prop('required',false);
     $("#cuiltTransf").prop('required',false);
 }
-function showFormTransferenciaBancaria() {
+const showFormTransferenciaBancaria = () => {
     $("#formMercadoPago").css('display','none');
     $("#emailMP").prop('required',false);
 
