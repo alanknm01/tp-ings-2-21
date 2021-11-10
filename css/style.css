@@ -5,11 +5,37 @@ body{
     background-repeat: no-repeat;
     text-align: center;
     color: white;
-
 }
 
 .img-posts{
-
     height: 50%;
 }
 
+.menu {
+    padding: 5%;
+    margin-left: 15%;
+    margin-top: 10%;
+}
+
+.logo {
+    font-family: "Trirong", serif;
+}
+
+.buttons {
+    padding: 5%;
+    margin-left: 15%;
+}
+
+#artesanias {
+    margin: 5%;
+    font-size: 30px;
+    border-radius: 5px;
+    font-family: "Trirong", serif;
+}
+
+#talleres {
+    margin: 5%;
+    font-size: 30px;
+    border-radius: 5px;
+    font-family: "Trirong", serif;
+}
