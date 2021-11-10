@@ -21,12 +21,7 @@ body{
     font-size: 30px;
 }
 
-.label-form { 
-    color: white;
-    font-size: 20px;
-    margin-left: 45px;
 
-}
 
 .contact-title-form{
     color: white;
@@ -48,29 +43,11 @@ body{
     text-align: center;
 }
 
-.form-usr-pass{ /* INPUT USER AND PASSWORD */
-    
-    display: block;
-    font-size: 17px;
-    margin: 12px auto;
-    padding: 5px;
-    background: rgba(0, 0, 0, .9);
-    color: white;
-    width: 350px;
-    border-bottom: 4px solid orange;
-    transition: all .2s ease; 
-}
-
-.form-usr-pass:focus {
-    border-bottom: 4px solid blue;
-}
-
-.buttons-form{
-    text-align: center;
-}
 
 
-.buttons { /* BOTONES REGISTRARSE - INICIAR SESION */
+
+
+.buttons { /* BOTONES GRANDES*/
   border: none;
    font-weight: 500;
    font-size: 17px;
@@ -88,24 +65,8 @@ body{
     background: blue;
 }
 
-#pass-forgotten { /* OLVIDASTE LA CONTRASEÑA */
-    display: block;
-    text-align: center;
-    font-size: 15px;
-    text-decoration: none;
-    color: white;
-    padding-top: 20px;
-}
 
-#pass-forgotten:hover {
-    text-decoration: underline;
-}
 
-/* FORMULARIO REGISTRO */
-
-/* .form2{
-    display: none;
-} */
 
 .title-form2 {
     text-align: center;
@@ -167,16 +128,18 @@ body{
     background: blue;
 }
 
-.o {
-    margin: 0;
-    color: white;
-    font-size: 15px;
+.check_input_post{
+    color: #fff;
+    font-size: 14px;
+    padding-left: 10px;
 }
 
-#pagoSignUp{
-    text-align: center;
+.check_type{
+    margin: 20px 0;
 }
 
-.formMedioPago{
-    text-align: center;
+.input_v{
+    margin-left: 17px;
+    color: #fff;
+    font-size: 14px;
 }

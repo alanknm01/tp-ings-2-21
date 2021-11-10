@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/payment.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../css/dom_vehiculo.css">
     <title>Document</title>
 </head>
 
@@ -42,9 +41,23 @@
                             <!-- onclick="location.href='index.html'" -->
                             <input type="text" name="name-artesania" id="name-artesania" placeholder="Nombre artesania"
                                 class="input-register" autocomplete="." required="" minlength="1" maxlength="15">
-                            <input type="button" name="enviar-nombre-artesania" value="Comparar precios" id="button-name-artesania"
+                            <input type="button" name="enviar-nombre-artesania" value="Comparar precios" id="button-name-artesania" class="button-register"
                                  target="_blank">
                         </form>
+
+                         <!-- CHECKS TIPO PUBLICACION -->
+                         <div class="check_type">
+
+                            <label class="check_input_post">
+                                <input type="radio" id="post_venta" name="post_type"> Tipo venta directa
+                            </label>
+
+                            <label class="check_input_post">
+                                <input type="radio" id="post_muestra" name="post_type"> Tipo muestra
+                            </label>
+
+                        </div>
+
                         <input type="text" id="price-artesania" placeholder="Precio artesania" class="input-register"
                             autocomplete="." required="" minlength="1" maxlength="10">
                         <!-- CATEGORIAS -->
@@ -57,18 +70,7 @@
                         </select>
 
 
-                        <!-- CHECKS TIPO PUBLICACION -->
-                        <div class="vehiculo">
-
-                            <label class="vehiculo__input">
-                                <input type="radio" id="post_venta" name="post_type"> Tipo venta directa
-                            </label>
-
-                            <label class="vehiculo__input, input_v">
-                                <input type="radio" id="post_muestra" name="post_type"> Tipo muestra
-                            </label>
-
-                        </div>
+                       
 
                         <br>
                         <div class="container-button-register">
