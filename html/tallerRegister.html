@@ -42,7 +42,15 @@
                             <option value="3">Accesorios</option>
                             <option value="4">Inmuebles</option>
                         </select>
-                        <input type="text" id="direccionInput" placeholder="Aqui iria el normalizador de direcciones SI HUBIERA UNO" class="input-register" autocomplete="." required="" >
+                        <form action="">
+                            <input type="text"   id="calleInput"    placeholder="Calle"   class="input-register" autocomplete="." required="" >
+                            <input type="number" id="alturaInput"   placeholder="Altura"  class="input-register" autocomplete="." required="" >
+                            <input type="text"   id="partidoInput"  placeholder="Partido" class="input-register" autocomplete=".">
+                            <div class="container-button-register">
+                                <input type="submit" id="normalizadorDireccion" value="Buscar Direccion" class="button-register" onclick="RequestUSIG()" >
+                            </div>
+                        </form>
+
                         <h4 class="contact-title-form"> Horario apertura: </h4>
                         <input type="time" id="horarioAperturaInput" class="input-register" required="">
                         <h4 class="contact-title-form">  Horario de cierre: </h4>
