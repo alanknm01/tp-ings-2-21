@@ -9,63 +9,85 @@ const validaCheckbox = ()=>{
     console.log("checked muestra: ",checkedMuestra)
     console.log("checked venta: ",checkedVenta)
     if(checkedMuestra){
-        alert("CHECKED MUESTRA ELEGIDO!")
+
         document.getElementById('price-artesania').style.display="none"
+        document.getElementById('button-name-artesania').style.display="none"
+        document.getElementById('text-area').style.display="block"
   }
   if(checkedVenta){
-    alert("CHECKED VENTA ELEGIDO!")
     
     document.getElementById('price-artesania').style.display="block"
+    document.getElementById('button-name-artesania').style.display="block"
+    document.getElementById('text-area').style.display="none"
   }
 
 }
 
 validaCheckbox();
 
+const hideMenu = () =>{
+    document.getElementById('price-artesania').style.display="none"
+    document.getElementById('button-name-artesania').style.display="none"
+    document.getElementById('text-area').style.display="none"
+}
+
+hideMenu();
+
 function register(){
     const name_artesania = document.getElementById("name-artesaniaID").value;
-    const $select = document.querySelector("select-categories")
-    const $indice = document.querySelector("select-categories").selectedIndex;
-    console.log("el indice es: ",$indice)
-    const selected_option = $select.options[$indice].text
+    const price_artesania = document.getElementById("price-artesania").value;
+    const text_area = document.getElementById("text-area").value;
+    const $indice = document.querySelector("#select-categories").selectedIndex;
+
+
+    const checkboxMuestra = document.getElementById('post_muestra');
+    const checkboxVenta = document.getElementById('post_venta');
+    checkboxMuestra.addEventListener("change", validaCheckbox, false);
+    checkboxVenta.addEventListener("change", validaCheckbox, false);
+    const checkedMuestra = checkboxMuestra.checked;
+    const checkedVenta = checkboxVenta.checked;
 
     const name= document.getElementById("nameInput").value;
     const surname= document.getElementById("surnameInput").value;
-    const dni = document.getElementById("dniInput").value;
     const email= document.getElementById("emailInput").value;
-    
-    console.log("REGISTER checked muestra: ",checkedMuestra)
-    console.log("REGISTER checked venta: ",checkedVenta)
-    if(name!="" && surname!="" && name_artesania!=""  && $indice!=-1 && validaMail(email) && validaDNI(dni)){
-        
-            let post = {
-                "name_artesania" : name_artesania,
-                "category" : selected_option,
-                "dni" : dni,
-                "email" : email,
-                "password" : password,
+
+    if(checkedVenta){
+        if(name!="" && surname!="" && name_artesania!=""  && $indice!=-1 && validaMail(email) && price_artesania!=""){      
+                //almacenar el json en algun lado..
+                alert('Registrado correctamente!');   
+                vaciarCampos();             
+            
             }
-            //almacenar el json en algun lado..
-            alert('Registrado correctamente!');
-            vaciarCampos();
-            loginMenu();
-        
-        
-        }
-        else{
-            alert('Datos incompletos!');
+            else{
+                alert('Datos incompletos!');
+                }
+    }
+    else 
+    {
+    if(checkedMuestra){
+        if(name!="" && surname!="" && name_artesania!=""  && $indice!=-1 && validaMail(email) && text_area!=""){
+            alert('Registrado correctamente!');   
+                vaciarCampos();             
+            
             }
-        }
+            else{
+                alert('Datos incompletos!');
+                }
+        }}
+    return false;
+    }
+        
+        
 
 
 const vaciarCampos = ()=>{
 
     document.getElementById("nameInput").value = "";
-    document.getElementById("dniInput").value = "";
     document.getElementById("surnameInput").value = "";
-    document.getElementById("fechaNacimientoInput").value = ""; 
     document.getElementById("emailInput").value = "";
-    document.getElementById("post_venta").attributes("checked","true");
+    document.getElementById("name-artesaniaID").value = "";
+    document.getElementById("price-artesania").value = "";
+    document.getElementById("text-area").value = "";
 }
   
 const validaMail = (mail)=>{

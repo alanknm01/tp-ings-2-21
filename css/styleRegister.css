@@ -143,3 +143,21 @@ body{
     color: #fff;
     font-size: 14px;
 }
+
+#text-area{
+    font-size: 15px;
+    resize: none;
+    font-family: 'Merriweather', serif;
+    display: block;
+    margin: 12px auto;
+    padding: 5px;
+    background: rgba(0, 0, 0, .9);
+    color: white;
+    width: 350px;
+    border-bottom: 4px solid orange;
+    transition: all .4s ease; 
+}
+
+#text-area:focus{
+    border-bottom: 4px solid blue;
+}
