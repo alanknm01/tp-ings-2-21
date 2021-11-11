@@ -13,7 +13,7 @@ const renderMessage = (id) => {
 const dir_creator = (dir_number) =>{
     console.log("DIR NUMBER: ",dir_number)
      const $container  = document.querySelector(`#post${dir_number}`);
-     $container.innerHTML = `<h3 id="article_name${dir_number}"></h3>
+     $container.innerHTML = `<h3 id="${dir_number}"></h3>
                              <h3 id="article_price${dir_number}"></h3>
                              <h3 id="article_id${dir_number}"></h3>
                              <img class="img-posts" src="" id="article_image${dir_number}" alt="">`;
