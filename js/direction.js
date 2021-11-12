@@ -10,29 +10,30 @@ const renderMessage = (id) => {
     return $message;
 }
 
-const dir_creator = (dir_number) =>{
-    console.log("DIR NUMBER: ",dir_number)
-     const $container  = document.querySelector(`#post${dir_number}`);
-     $container.innerHTML = `<h3 id="${dir_number}"></h3>
-                             <h3 id="article_price${dir_number}"></h3>
-                             <h3 id="article_id${dir_number}"></h3>
-                             <img class="img-posts" src="" id="article_image${dir_number}" alt="">`;
-         }
+const dir_creator = (array_direccion) =>{
+    const $container  = document.querySelector(`#dirList`);
+    var optionHTML=""
+    for (i=0 ;i < array_direccion.length ;i++){
+        dir=dir_Stringer(array_direccion[i])
+        optionHTML+=`<option value="${i}">${dir}</option>
+         `;
+    };
+    $container.innerHTML =optionHTML
+}
 
-const RequestUSIG = async (calle,altura,partido) => { 
-    //article deberia tener los parametros para hacer la normalizacion
-    
+function dir_Stringer(dir_normalizada){
+    return dir_normalizada.direccion +", " +dir_normalizada.nombre_localidad
+}
+const RequestUSIG = async (calle,altura,partido) => {     
     const response = await fetch (`http://servicios.usig.buenosaires.gob.ar/normalizar/?direccion=${calle} ${altura},${partido}&maxOptions=5`)
-
     if(response.ok){
         direction= await response.json()
-        direction.direccionesNormalizadas.forEach(dir => {
-            console.log(dir)
-        });
-            
+        if(direction.direccionesNormalizadas.length!=0) { 
+            dir_creator(direction.direccionesNormalizadas)
+        }else{//aca yo queria que muestre un cuadro de dialogo diciendole uqen o hay direcciones pero nosesi es el lugar indicado para hacerlo xd
+            renderMessage("Request Error")
+        }
         
-
     }
-
 }
-RequestUSIG("los andes",565,"nogues")
+RequestUSIG("patricias mendocinas",240,"nogues")
