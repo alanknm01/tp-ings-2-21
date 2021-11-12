@@ -1,31 +1,40 @@
-function bootstrap() {
 
-  var ungsLocation = [-34.5221554, -58.7000067];
-  var map = L.map('mapid').setView(ungsLocation, 15);
+class Mapa {
 
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+  constructor(){
+    this.ungsLocation = [-34.5221554, -58.7000067];
+    this.map = L.map('mapid').setView(this.ungsLocation, 13);
 
-  L.polygon([
-    L.latLng(-34.515594, -58.705654),
-    L.latLng(-34.523503, -58.714062),
-    L.latLng(-34.519177, -58.719890),
-    L.latLng(-34.511089, -58.711374),
-    L.latLng(-34.514062, -58.707909),
-    L.latLng(-34.513824, -58.707584)
-]).addTo(map);
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(this.map);
+  }
 
-  var ungsMarker=L.marker(ungsLocation);
-  ungsMarker.addTo(map);
+  get_map(){
+    return this.map;
+  }
 
-  var cluster = L.markerClusterGroup();
-  cluster.addLayers([
-    ungsMarker,
-    L.marker([-34.533755, -58.692713]),
-    L.marker([-34.516181, -58.716625])
-  ])
-
-  cluster.addTo(map);
-  //map.addLayer(cluster);
+  add_to_map(nombre, coordenadas){
+    console.log('add');
+    console.log(coordenadas);
+    console.log(nombre);
+    
+    var newMarker=L.marker(coordenadas)
+    newMarker.addTo(this.map)
+      .bindPopup(nombre);
+  }
 }
+
+// function init_storage(){
+//   try {
+//     var first_obj_json = '[]';
+//     var init = JSON.parse(first_obj_json);
+//     localStorage.setItem('myStorage', JSON.stringify(init));
+//     console.log('Se inició correctamente');
+//   } catch (error) {
+//     alert(error);
+//   }
+// }
+
+
+// init_storage()

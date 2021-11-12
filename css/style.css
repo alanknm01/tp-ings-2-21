@@ -13,7 +13,7 @@ body{
 
 .menu {
     padding: 5%;
-    margin-left: 15%;
+    margin-left: 12%;
     margin-top: 10%;
 }
 
@@ -44,6 +44,7 @@ body{
     font-family: "Trirong", serif;
     margin-left: 37%;
     margin-top: 2%;
+    color: #cccccc;
 }
 
 .layout {
