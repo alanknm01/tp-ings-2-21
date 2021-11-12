@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar taller</title>
+    <link rel="stylesheet" href="../css/styleRegister.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+
+</body>
+    <header class="header">
+
+    </header>
+
+    <section class="login">
+        <div class="container">
+
+            <form action="#" class="form" method="post" target="_blank">
+                
+                <div class="form2" id="form-SignUp">
+                    <h2 class="title-form">Registro de Taller</h2>
+                    <div class="container-inputs">
+                        <h3 class="contact-title-form">Datos del taller</h3>
+                        <input type="text" id="nameInput" placeholder="Nombre" class="input-register" autocomplete="." required="" minlength="1" maxlength="15">
+                        <input type="text" id="descriptionInput" placeholder="Descripcion del taller" class="input-register" autocomplete="." required="" minlength="1">
+                        <select name="categories" id="select-categories" class="categories-register">
+                            <option>Elija una categoria</option>
+                            <option value="1">Arte y manualidades</option>
+                            <option value="2">Hogar y muebles</option>
+                            <option value="3">Accesorios</option>
+                            <option value="4">Inmuebles</option>
+                        </select>
+                        <select name="activities" id="select-activities" class="categories-register">
+                            <option>Elija una actividad</option>
+                            <option value="1">Arte y manualidades</option>
+                            <option value="2">Hogar y muebles</option>
+                            <option value="3">Accesorios</option>
+                            <option value="4">Inmuebles</option>
+                        </select>
+                        <form action="" method="post">
+                            <input type="text"   id="calleInput"    placeholder="Calle"   class="input-register" autocomplete="." required="" >
+                            <input type="number" id="alturaInput"   placeholder="Altura"  class="input-register" autocomplete="." required="" >
+                            <input type="text"   id="partidoInput"  placeholder="Partido" class="input-register" autocomplete=".">
+                            <input type="submit" id="normalizadorDireccion" value="Buscar Direccion" class="button-register" onclick="request_direction()" >
+                            <select class="categories-register"  name="Lista-de-direcciones" id="dirList">
+            
+                            </select>
+                            <script src="../js/direction.js"> </script>
+                        </form>
+
+                        <h4 class="contact-title-form"> Horario apertura: </h4>
+                        <input type="time" id="horarioAperturaInput" class="input-register" required="">
+                        <h4 class="contact-title-form">  Horario de cierre: </h4>
+                        <input type="time" id="horarioCerrarInput"   class="input-register" required="">
+                        <input type="tel" id="phoneInput" name="phone" placeholder="Numero de telefono" pattern="[0-1]{3}-[0-9]{10}" class="input-register" required="" maxlength="13">
+                        
+                        <br>
+                        <div class="container-button-register">
+                            <input type="submit" id="registerTaller" value="Registrar taller" class="button-register" onclick="register_taller()">
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </form>
+        </div>
+    </section>
+
+</body>
+
+</html>

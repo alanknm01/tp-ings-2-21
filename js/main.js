@@ -8,58 +8,75 @@ const renderImg = (id) => {
     return $image;
 }
 
-
-
-
-
-
-function renderName(message){
-    const $message = renderMessage('article_name')
+const renderName = (message,post_number)=>{
+    const $message = renderMessage(`article_name${post_number}`)
     $message.textContent = message
 }
 
-function renderPrice(price){
-    const $price = renderMessage('article_price')
+const renderPrice = (price,post_number)=>{
+    const $price = renderMessage(`article_price${post_number}`)
     $price.textContent = price
 }
 
-function renderImage(img){
-    const $image = renderImg('article_image');
+const renderImage = (img,post_number)=>{
+    const $image = renderImg(`article_image${post_number}`);
     $image.setAttribute('src',img)
 }
 
-function renderId(id){
-    const $id = renderMessage('article_id')
+const renderId = (id,post_number)=>{
+    const $id = renderMessage(`article_id${post_number}`)
     $id.textContent = id
 }
+ 
+ const post_creator = (post_number) =>{
+    console.log("POST NUMBER: ",post_number)
+     const $container  = document.querySelector(`#post${post_number}`);
+     $container.innerHTML = `<h3 id="article_name${post_number}"></h3>
+                             <h3 id="article_price${post_number}"></h3>
+                             <h3 id="article_id${post_number}"></h3>
+                             <img class="img-posts" src="" id="article_image${post_number}" alt="">`;
+         }
+
 
 const RequestMeli = async (article) => {
 
+    console.log("nombre request",article)
     const response = await fetch (`https://api.mercadolibre.com/sites/MLA/search?q=${article}`)
 
     if(response.ok){
+        
         articleMeli = await response.json()
-        article_name =  articleMeli.results[0].title
-        article_price = articleMeli.results[0].price
-        article_id = articleMeli.results[0].id
-        picture_response = await fetch (`https://api.mercadolibre.com/items/${article_id}`)
+        let post_number = 0
+        while(post_number < 10) 
+        {
+
+        article_name =  articleMeli.results[post_number].title
+        article_price =  articleMeli.results[post_number].price
+        article_id =  articleMeli.results[post_number].id
+        post_creator(post_number)
+        renderName(`NOMBRE DEL ARTICULO: ${article_name}`,post_number)
+        renderPrice(`PRECIO: ${article_price}`,post_number)
+        const picture_response = await fetch (`https://api.mercadolibre.com/items/${article_id}`)
         if(picture_response.ok){
+
             picture_meli = await picture_response.json()
             article_image = picture_meli.pictures[0].secure_url
-
+            renderImage(article_image,post_number)
         }
-       // article_id2 = article_id.pictures.id
-        renderName(`NOMBRE DEL ARTICULO: ${article_name}`)
-        renderPrice(`PRECIO: ${article_price}`)
-        //renderId(`El id del articulo es: ${article_id2}`)
-        renderImage(article_image)
+        else{
+            renderMessage("Image Error")
+        }
 
+        post_number+=1;
+        }
     }
     else{
-        renderName("Error no se pudo encontrar lo solicitado")
+        renderMessage("Request Error")
     }
-
 
 }
 
-RequestMeli("mate");
+
+
+RequestMeli("teclado"); 
+
