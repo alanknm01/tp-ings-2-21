@@ -25,15 +25,63 @@ function dir_Stringer(dir_normalizada){
     return dir_normalizada.direccion +", " +dir_normalizada.nombre_localidad
 }
 const RequestUSIG = async (calle,altura,partido) => {     
-    const response = await fetch (`http://servicios.usig.buenosaires.gob.ar/normalizar/?direccion=${calle} ${altura},${partido}&maxOptions=5`)
+    const response = await fetch (`http://servicios.usig.buenosaires.gob.ar/normalizar/?direccion=${calle} ${altura},${partido}`)
     if(response.ok){
         direction= await response.json()
-        if(direction.direccionesNormalizadas.length!=0) { 
+        if("errorMessage" in direction) { 
+            alert(direction.errorMessage)
+            document.querySelector(`#dirList`).innerHTML="" //vaciar el select
+        }else{
+            document.getElementById("dirList").style.display="block"
             dir_creator(direction.direccionesNormalizadas)
-        }else{//aca yo queria que muestre un cuadro de dialogo diciendole uqen o hay direcciones pero nosesi es el lugar indicado para hacerlo xd
-            renderMessage("Request Error")
         }
         
     }
 }
-RequestUSIG("patricias mendocinas",240,"nogues")
+const hide_select=()=>{
+   document.getElementById("dirList").style.display="none"
+}
+hide_select();
+const direccion_check=()=>{
+
+}
+
+function register_taller(){
+        const name_Taller        = document.getElementById("nameInput").value;
+        const description_Taller = document.getElementById("descriptionInput").value;
+        const categorie_Taller   = document.getElementById("select-categories").value;
+        const activitie_Taller   = document.getElementById("select-activities").value;
+        const direction_Taller   = document.getElementById("dirList").value;
+        const apertura_Taller    = document.getElementById("horarioAperturaInput").value;
+        const cierre_Taller      = document.getElementById("horarioCerrarInput").value;
+        const telefono_Taller    = document.getElementById("phoneInput").value;
+        if (name_Taller!=""&description_Taller!=""&categorie_Taller!=""&activitie_Taller!=""&direction_Taller!=""&apertura_Taller!=""&cierre_Taller!=""&telefono_Taller!=""){
+
+        alert("Taller registrado!")
+        vaciarCampos_Taller()
+    }else{
+        alert('Datos incompletos!');    
+    }
+}
+const vaciarCampos_Taller = ()=>{
+
+    document.getElementById("nameInput").value="";
+    document.getElementById("descriptionInput").value="";
+    document.getElementById("select-categories").value="";
+    document.getElementById("select-activities").value="";
+    document.getElementById("dirList").value="";
+    document.getElementById("horarioAperturaInput").value="";
+    document.getElementById("horarioCerrarInput").value="";
+    document.getElementById("phoneInput").value="";
+}
+const request_direction=()=>{
+    
+    const calle  =document.getElementById("calleInput").value
+    const altura =document.getElementById("alturaInput").value
+    const partido=document.getElementById("partidoInput").value
+    if(calle!=""&altura!=""){
+        RequestUSIG(calle,altura,partido)
+    }else{
+        alert("Campos de direccion incompletos!")
+    }
+}
