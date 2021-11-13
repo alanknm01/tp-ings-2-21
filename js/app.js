@@ -6,8 +6,6 @@ const validaCheckbox = ()=>{
     checkboxVenta.addEventListener("change", validaCheckbox, false);
     var checkedMuestra = checkboxMuestra.checked;
     var checkedVenta = checkboxVenta.checked;
-    console.log("checked muestra: ",checkedMuestra)
-    console.log("checked venta: ",checkedVenta)
     if(checkedMuestra){
 
         document.getElementById('price-artesania').style.display="none"
@@ -38,7 +36,6 @@ function register(){
     const price_artesania = document.getElementById("price-artesania").value;
     const text_area = document.getElementById("text-area").value;
     const $indice = document.querySelector("#select-categories").selectedIndex;
-    console.log("el indice seleccionado es el: ",$indice)
 
     const checkboxMuestra = document.getElementById('post_muestra');
     const checkboxVenta = document.getElementById('post_venta');
@@ -127,7 +124,7 @@ const renderId = (id,post_number)=>{
 }
 
 const post_creator = (post_number) =>{
-    console.log("POST NUMBER: ",post_number)
+
      const $container  = document.querySelector(`#post${post_number}`);
      $container.innerHTML = `<h3 id="article_name${post_number}"></h3>
                              <h3 id="article_price${post_number}"></h3>
