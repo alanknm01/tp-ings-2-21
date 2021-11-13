@@ -1,5 +1,3 @@
-
-
 const renderName = (message,post_number)=>{
     const $message = renderMessage(`article_name${post_number}`)
     $message.textContent = message
@@ -58,21 +56,10 @@ function register_taller(){
         if (name_Taller!=""&description_Taller!=""&categorie_Taller!=""&activitie_Taller!=""&direction_Taller!=""&apertura_Taller!=""&cierre_Taller!=""&telefono_Taller!=""){
 
         alert("Taller registrado!")
-        vaciarCampos_Taller()
+        window.location.href = window.location.href;
     }else{
         alert('Datos incompletos!');    
     }
-}
-const vaciarCampos_Taller = ()=>{
-
-    document.getElementById("nameInput").value="";
-    document.getElementById("descriptionInput").value="";
-    document.getElementById("select-categories").value="";
-    document.getElementById("select-activities").value="";
-    document.getElementById("dirList").value="";
-    document.getElementById("horarioAperturaInput").value="";
-    document.getElementById("horarioCerrarInput").value="";
-    document.getElementById("phoneInput").value="";
 }
 const request_direction=()=>{
     

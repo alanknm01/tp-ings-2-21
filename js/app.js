@@ -1,4 +1,3 @@
-
 const validaCheckbox = ()=>{
 
     const checkboxMuestra = document.getElementById('post_muestra');
@@ -39,7 +38,7 @@ function register(){
     const price_artesania = document.getElementById("price-artesania").value;
     const text_area = document.getElementById("text-area").value;
     const $indice = document.querySelector("#select-categories").selectedIndex;
-
+    console.log("el indice seleccionado es el: ",$indice)
 
     const checkboxMuestra = document.getElementById('post_muestra');
     const checkboxVenta = document.getElementById('post_venta');
@@ -53,10 +52,9 @@ function register(){
     const email= document.getElementById("emailInput").value;
 
     if(checkedVenta){
-        if(name!="" && surname!="" && name_artesania!=""  && $indice!=-1 && validaMail(email) && price_artesania!=""){      
-                //almacenar el json en algun lado..
+        if(name!="" && surname!="" && name_artesania!=""  && $indice!=-1 && $indice!=0 && validaMail(email) && price_artesania!=""){      
                 alert('Registrado correctamente!');   
-                vaciarCampos();             
+                window.location.href = window.location.href;           
             
             }
             else{
@@ -68,8 +66,8 @@ function register(){
     if(checkedMuestra){
         if(name!="" && surname!="" && name_artesania!=""  && $indice!=-1 && validaMail(email) && text_area!=""){
             alert('Registrado correctamente!');   
-                vaciarCampos();             
-            
+                location.reload();
+
             }
             else{
                 alert('Datos incompletos!');
@@ -77,19 +75,6 @@ function register(){
         }}
     return false;
     }
-        
-        
-
-
-const vaciarCampos = ()=>{
-
-    document.getElementById("nameInput").value = "";
-    document.getElementById("surnameInput").value = "";
-    document.getElementById("emailInput").value = "";
-    document.getElementById("name-artesaniaID").value = "";
-    document.getElementById("price-artesania").value = "";
-    document.getElementById("text-area").value = "";
-}
   
 const validaMail = (mail)=>{
         var ex_regular_mail; 
@@ -110,9 +95,6 @@ const validaDNI = (dni)=>{
        return false;
      }
 }
-
-
-// -------------------------------------------
 
 const renderMessage = (id) => {
     const $message = document.querySelector(`#${id}`);
@@ -144,9 +126,6 @@ const renderId = (id,post_number)=>{
     $id.textContent = id
 }
 
-
-
-
 const post_creator = (post_number) =>{
     console.log("POST NUMBER: ",post_number)
      const $container  = document.querySelector(`#post${post_number}`);
@@ -159,15 +138,13 @@ const post_creator = (post_number) =>{
 
 const RequestMeli = async (article) => {
 
-    console.log("nombre request",article)
     const response = await fetch (`https://api.mercadolibre.com/sites/MLA/search?q=${article}`)
 
     if(response.ok){
         
         articleMeli = await response.json()
         let post_number = 0
-        while(post_number < 10) 
-        {
+        while(post_number < 10) {
 
         article_name =  articleMeli.results[post_number].title
         article_price =  articleMeli.results[post_number].price
@@ -195,17 +172,16 @@ const RequestMeli = async (article) => {
 
 }
 
-
 const open = document.getElementById('button-name-artesania');
 const modal_container = document.getElementById('modal_container');
-// modal_container.style.display="block"
 const close = document.getElementById('close');
 
 open.addEventListener('click', () => {
-  modal_container.classList.add('show');  
-  RequestMeli("mouse");
+    const name_artesania = document.getElementById("name-artesaniaID").value;
+    modal_container.classList.add('show');  
+    RequestMeli(name_artesania);
 });
 
 close.addEventListener('click', () => {
-  modal_container.classList.remove('show');
+    modal_container.classList.remove('show');
 });
