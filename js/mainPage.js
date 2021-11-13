@@ -1,15 +1,26 @@
 var m = null;
 var insert = false
+var articles = ['angel', 'atrapaSuenios', 'Billeteras', 'calaberas','carpinteria','decoraciones','jarron','mate'];
 
-var articles = new Array('angel', 'atrapasuenios', 'billeteras', 'calaberas');
 
 const search = () => {
     var searchword = document.getElementById('search').value;
     console.log('palabra buscada: ' + searchword);
     articles.forEach(articlename => {
-        if(searchword == articlename)
+        if (searchword===""){mostrarTodos()}
+        if(searchword != articlename){
             //habria que hacer la busqueda por categorias y nombres
-            console.log('palabra encontrada: ' + articlename);
+            document.getElementById(`articulo_${articlename}`).style.display="none";
+        }else{
+            document.getElementById(`articulo_${articlename}`).style.display="block"
+        }
+    });
+}
+
+function mostrarTodos(){
+    articles.forEach(articlename => {
+        document.getElementById(`articulo_${articlename}`).style.display="block"
+
     });
 }
 
@@ -75,3 +86,41 @@ function focus_taller(coordenadas){
     var new_coordenadas = coordenadas.split(',')
     m.map.setView(new_coordenadas, 15);
 }
+
+function card_creator(){
+    console.log("SE ESTAN CONSTRUYENDO!")
+   
+    var descriptions= [ 'Angelitos 100% reales no biblicos',
+                        'Atrapasueños para calmar las pesadillas',
+                        'Billeteras para que no se te escapen los billetes',
+                        'Calaberas con B porque calavera no chilla', 
+                        'Articulos de carpinteria porque vos no sabes hacer muebles jaja',
+                        'Decoraciones de muebles, cocina y basicamente para toda la casa qcyo',
+                        'Jarrones para las flores o para la abuela',
+                        'Mates para compartir con todos y agarrarte un santo COVID-19'    
+    ]
+    const $container= document.getElementById("ID_cartelera");
+    console.log($container)
+
+    var cards="";
+    for(i=0;i<articles.length;i++){
+    if(i<6){    cards+=`<div id= "articulo_${articles[i]}" class="card">
+                        <img class="card-img-top" src="../img/${articles[i]}.jpeg">
+                        <div class="card-body">
+                        <h1>${articles[i]}</h1> 
+                        <p class="card-text">${descriptions[i]}</p>
+                        </div>
+                     </div>`
+    }else{
+        cards+=`<div id= "articulo_${articles[i]}" class="card">
+                        <img class="card-img-top" src="../img/${articles[i]}.jpg">
+                        <div class="card-body">
+                        <h1>${articles[i]}</h1> 
+                        <p class="card-text">${descriptions[i]}</p>
+                        </div>
+                     </div>`
+    }
+    }
+    $container.innerHTML=cards;
+}
+card_creator()
