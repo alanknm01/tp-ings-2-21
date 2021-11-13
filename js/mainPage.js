@@ -1,6 +1,18 @@
 var m = null;
 var insert = false
 
+var articles = new Array('angel', 'atrapasuenios', 'billeteras', 'calaberas');
+
+const search = () => {
+    var searchword = document.getElementById('search').value;
+    console.log('palabra buscada: ' + searchword);
+    articles.forEach(articlename => {
+        if(searchword == articlename)
+            //habria que hacer la busqueda por categorias y nombres
+            console.log('palabra encontrada: ' + articlename);
+    });
+}
+
 const renderMessage = (id) => {
     const $message = document.querySelector(`#${id}`);
     return $message;
