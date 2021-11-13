@@ -38,7 +38,7 @@ const renderId = (id,post_number)=>{
          }
 
 
-const RequestMeli = async (article) => {
+export const RequestMeli = async (article) => {
 
     console.log("nombre request",article)
     const response = await fetch (`https://api.mercadolibre.com/sites/MLA/search?q=${article}`)
@@ -77,6 +77,4 @@ const RequestMeli = async (article) => {
 }
 
 
-
-RequestMeli("teclado"); 
 
